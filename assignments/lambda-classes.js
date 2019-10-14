@@ -25,7 +25,7 @@ class Person {
         }
     }
 
-    class Student {
+    class Student extends Person{
         constructor(childAttributes) {
             super(childAttributes);
             this.previousBackground = childAttributes.previousBackground;
@@ -46,4 +46,53 @@ class Person {
             console.log(`${student.name} has begun sprint challenge on ${subject}`);
         }
     }
+
+    class ProjectManager extends Instructor {
+        constructor(grandChildAttributes) {
+            super(grandChildAttributes);
+            this.gradClassName = grandChildAttributes.gradClassName;
+            this.favInstructor = grandChildAttributes.favInstructor;
+        }
+        standUp(channel) {
+            console.log(`${name} announces to ${channel} @channel stand up time!`)
+        }
+
+        debugsCode(student, subject) {
+            console.log(`${name} debugs ${student.name}'s code on ${subject}`)
+        }
+    }
+
+    const fred = new Instructor({
+        name: 'Fred',
+        location: 'Bedrock',
+        age: 37,
+        favLanguage: 'JavaScript',
+        specialty: 'Front-end',
+        catchPhrase: `Don't forget the homies`
+      });
+
+    
+    const sam = new Student({
+        name: 'Sam',
+        location: 'San Jose',
+        age: 21,
+        previousBackground: 'Nursing',
+        className: 'WEBPT8',
+        favSubjects: `Computer Science`
+      });
+
+    const lisa = new ProjectManager({
+        name: 'Lisa',
+        location: 'Tahoe',
+        age: 32,
+        favLanguage: 'Python',
+        specialty: 'Back-end',
+        catchPhrase: `Life's good`,
+        gradClassName: 'WEB5',
+        favInstructor: 'Evan'
+      });
+
+      console.log(fred.demo());
+      console.log(sam.listSubjects());
+      console.log(lisa.standUp);
 
